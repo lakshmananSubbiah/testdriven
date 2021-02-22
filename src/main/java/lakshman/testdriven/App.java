@@ -23,8 +23,10 @@ public class App
        }
     }
 
-	static char[] processNumber(String numberString) {
-		// TODO Auto-generated method stub
+	static Integer processNumber(String numberString) {
+		if(numberString==null || numberString.equals("")) {
+			return 0;
+		}
 		return null;
 	}
 }

@@ -17,7 +17,12 @@ public class AppTest
      * Rigorous Test :-)
      */
     @Test
-    public void initialCaseReturnNull(){
-    	assertThat(App.processNumber(null),equalTo(null));
+    public void firstCaseEmptyString(){
+    	assertThat(App.processNumber(""),equalTo(0));
+    }
+    
+    @Test
+    public void secondCaseNullString() {
+    	assertThat(App.processNumber(null),equalTo(0));
     }
 }
