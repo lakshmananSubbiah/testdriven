@@ -25,4 +25,15 @@ public class AppTest
     public void secondCaseNullString() {
     	assertThat(App.processNumber(null),equalTo(0));
     }
+    
+    @Test
+    public void testWithNumber1() {
+    	assertThat(App.processNumber("1"),equalTo(1));
+    }
+    
+    @Test
+    public void testWithNumber2() {
+    	assertThat(App.processNumber("100"),equalTo(100));
+    }
+    
 }

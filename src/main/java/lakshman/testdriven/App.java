@@ -27,6 +27,8 @@ public class App
 		if(numberString==null || numberString.equals("")) {
 			return 0;
 		}
-		return null;
+		else {
+			return Integer.parseInt(numberString);
+		}
 	}
 }
