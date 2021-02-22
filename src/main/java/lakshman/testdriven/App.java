@@ -12,6 +12,9 @@ import java.util.List;
  */
 public class App 
 {
+	
+	private static int count = 0;
+	
     public static void main( String[] args )
     {
        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,6 +29,7 @@ public class App
     }
 
 	static Integer processNumber(String numberString) {
+		count = 0;
 		if(numberString==null || numberString.equals("")) {
 			return 0;
 		}
@@ -47,6 +51,7 @@ public class App
 						negativeNums.add(num);
 					}
 					sum+=num;
+					count++;
 				}
 			}
 			if(flag) {
@@ -55,4 +60,9 @@ public class App
 			return sum;
 		}
 	}
+	
+	public static int getCount() {
+		return count;
+	}
+	
 }

@@ -94,4 +94,16 @@ public class AppTest
     		assertThat(e.getMessage(),equalTo("negatives not allowed [-3, -5]"));
     	}
     }
+    
+    @Test
+    public void ninthCaseGetAddCount() {
+    	App.processNumber("1,2,3");
+    	assertThat(App.getCount(),equalTo(3));
+    }
+    
+    @Test
+    public void ninthCaseGetAddCount2() {
+    	App.processNumber("//;\n1;2");
+    	assertThat(App.getCount(),equalTo(2));
+    }
 }
