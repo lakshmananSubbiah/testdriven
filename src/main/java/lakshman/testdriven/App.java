@@ -36,8 +36,13 @@ public class App
 			int sum = 0;
 			String[] split = numberString.split(splitter+"|\n");
 			for(String sp: split) {
-				if(!sp.isEmpty()) 
-					sum += Integer.parseInt(sp);
+				if(!sp.isEmpty()) {
+					Integer num = Integer.parseInt(sp);
+					if(num<0) {
+						throw new NumberFormatException("negatives not allowed "+num);
+					}
+					sum+=num;
+				}
 			}
 			return sum;
 		}

@@ -3,6 +3,7 @@ package lakshman.testdriven;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -70,5 +71,16 @@ public class AppTest
     @Test
     public void sixthCaseChangeDelimiter2() {
     	assertThat(App.processNumber("//-15-34-50"),equalTo(99));
+    }
+    
+    @Test
+    public void seventhCaseNegativeNumbers() {
+    	try {
+    		App.processNumber("1,2,-3");
+    		fail("it should not be passed");
+    	}
+    	catch(NumberFormatException e) {
+    		assertThat(e.getMessage(),equalTo("negatives not allowed -3"));
+    	}
     }
 }
