@@ -34,10 +34,27 @@ public class App
 			return 0;
 		}
 		else {
-			char splitter = ',';
+			String splitter = ",";
 			if(numberString.startsWith("//")) {
-				splitter = numberString.charAt(2);
-				numberString = numberString.substring(3);
+				if(numberString.contains("[")) {
+					splitter = numberString.substring(3,numberString.indexOf("]"));
+					numberString = numberString.substring(numberString.indexOf("]")+1);
+					StringBuilder sb = new StringBuilder();
+					for(char c: splitter.toCharArray()) {
+						if(c == '*') {
+							sb.append('\\');
+							sb.append('*');
+						}
+						else {
+							sb.append(c);
+						}
+					}
+					splitter = sb.toString();
+				}
+				else {
+					splitter = numberString.substring(2, 3);
+					numberString = numberString.substring(3);
+				}
 			}
 			boolean flag = false;
 			List<Integer> negativeNums = new ArrayList<Integer>();

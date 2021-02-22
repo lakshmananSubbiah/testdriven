@@ -111,4 +111,9 @@ public class AppTest
     public void ignoreNumbersGreaterThanThousand() {
     	assertThat(App.processNumber("1,1001"),equalTo(1));
     }
+    
+    @Test
+    public void tenthCasemultipleDelimiter() {
+    	assertThat(App.processNumber("//[***]\n1***2***3"),equalTo(6));
+    }
 }
