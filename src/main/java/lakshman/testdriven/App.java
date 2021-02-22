@@ -28,7 +28,16 @@ public class App
 			return 0;
 		}
 		else {
-			return Integer.parseInt(numberString);
+			
+			if(numberString.contains(",")) {
+				int sum = 0;
+				String[] split = numberString.split(",");
+				sum = Integer.parseInt(split[0])+Integer.parseInt(split[1]);
+				return sum;
+			}
+			else {
+				return Integer.parseInt(numberString);
+			}
 		}
 	}
 }

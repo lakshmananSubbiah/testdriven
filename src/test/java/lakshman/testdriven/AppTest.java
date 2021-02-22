@@ -36,4 +36,9 @@ public class AppTest
     	assertThat(App.processNumber("100"),equalTo(100));
     }
     
+    @Test
+    public void thirdCaseTwoNumbersSeparatedByComma() {
+    	assertThat(App.processNumber("1,2"),equalTo(3));
+    }
+    
 }
