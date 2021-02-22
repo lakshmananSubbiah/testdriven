@@ -32,7 +32,9 @@ public class App
 			if(numberString.contains(",")) {
 				int sum = 0;
 				String[] split = numberString.split(",");
-				sum = Integer.parseInt(split[0])+Integer.parseInt(split[1]);
+				for(String sp: split) {
+					sum += Integer.parseInt(sp);
+				}
 				return sum;
 			}
 			else {

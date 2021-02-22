@@ -41,4 +41,20 @@ public class AppTest
     	assertThat(App.processNumber("1,2"),equalTo(3));
     }
     
+    @Test
+    public void fourthCaseUnknownAmountOfNumbers() {
+    	assertThat(App.processNumber("1,2,3,4"),equalTo(10));
+    }
+    
+    @Test
+    public void fourthCaseUnknownAmountOfNumbers2() {
+    	assertThat(App.processNumber("1,2,3,4,5"),equalTo(15));
+    }
+    
+    @Test
+    public void fourthCaseUnknownAmountOfNumbers3() {
+    	assertThat(App.processNumber("30,50,59"),equalTo(139));
+    }
+    
+    
 }
