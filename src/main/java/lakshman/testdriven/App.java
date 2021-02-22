@@ -3,6 +3,8 @@ package lakshman.testdriven;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Hello world!
@@ -33,16 +35,22 @@ public class App
 				splitter = numberString.charAt(2);
 				numberString = numberString.substring(3);
 			}
+			boolean flag = false;
+			List<Integer> negativeNums = new ArrayList<Integer>();
 			int sum = 0;
 			String[] split = numberString.split(splitter+"|\n");
 			for(String sp: split) {
 				if(!sp.isEmpty()) {
 					Integer num = Integer.parseInt(sp);
 					if(num<0) {
-						throw new NumberFormatException("negatives not allowed "+num);
+						flag = true;
+						negativeNums.add(num);
 					}
 					sum+=num;
 				}
+			}
+			if(flag) {
+				throw new NumberFormatException("negatives not allowed "+negativeNums);
 			}
 			return sum;
 		}

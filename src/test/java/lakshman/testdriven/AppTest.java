@@ -80,7 +80,18 @@ public class AppTest
     		fail("it should not be passed");
     	}
     	catch(NumberFormatException e) {
-    		assertThat(e.getMessage(),equalTo("negatives not allowed -3"));
+    		assertThat(e.getMessage(),equalTo("negatives not allowed [-3]"));
+    	}
+    }
+    
+    @Test
+    public void eigthCaseMultipleNegativeNumbers() {
+    	try {
+    		App.processNumber("1,2,-3,-5");
+    		fail("it should not be passed");
+    	}
+    	catch(NumberFormatException e) {
+    		assertThat(e.getMessage(),equalTo("negatives not allowed [-3, -5]"));
     	}
     }
 }
