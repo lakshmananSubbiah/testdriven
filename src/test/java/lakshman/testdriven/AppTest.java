@@ -106,4 +106,9 @@ public class AppTest
     	App.processNumber("//;\n1;2");
     	assertThat(App.getCount(),equalTo(2));
     }
+    
+    @Test
+    public void ignoreNumbersGreaterThanThousand() {
+    	assertThat(App.processNumber("1,1001"),equalTo(1));
+    }
 }

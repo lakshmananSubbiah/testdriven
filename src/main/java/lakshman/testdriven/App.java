@@ -50,6 +50,9 @@ public class App
 						flag = true;
 						negativeNums.add(num);
 					}
+					else if(num>1000) {
+						continue;
+					}
 					sum+=num;
 					count++;
 				}
