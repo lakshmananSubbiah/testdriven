@@ -56,5 +56,8 @@ public class AppTest
     	assertThat(App.processNumber("30,50,59"),equalTo(139));
     }
     
-    
+    @Test
+    public void fifthCaseNewLineBetweenNumbers() {
+    	assertThat(App.processNumber("1\n2,3"),equalTo(6));
+    }
 }

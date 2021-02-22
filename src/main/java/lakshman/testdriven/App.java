@@ -31,7 +31,7 @@ public class App
 			
 			if(numberString.contains(",")) {
 				int sum = 0;
-				String[] split = numberString.split(",");
+				String[] split = numberString.split(",|\n");
 				for(String sp: split) {
 					sum += Integer.parseInt(sp);
 				}
