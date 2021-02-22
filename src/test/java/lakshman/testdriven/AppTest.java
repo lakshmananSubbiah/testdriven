@@ -60,4 +60,15 @@ public class AppTest
     public void fifthCaseNewLineBetweenNumbers() {
     	assertThat(App.processNumber("1\n2,3"),equalTo(6));
     }
+    
+    @Test
+    public void sixthCaseChangeDelimiter() {
+    	assertThat(App.processNumber("//;\n1;2"),equalTo(3));
+    }
+    
+    
+    @Test
+    public void sixthCaseChangeDelimiter2() {
+    	assertThat(App.processNumber("//-15-34-50"),equalTo(99));
+    }
 }

@@ -28,18 +28,18 @@ public class App
 			return 0;
 		}
 		else {
-			
-			if(numberString.contains(",")) {
-				int sum = 0;
-				String[] split = numberString.split(",|\n");
-				for(String sp: split) {
+			char splitter = ',';
+			if(numberString.startsWith("//")) {
+				splitter = numberString.charAt(2);
+				numberString = numberString.substring(3);
+			}
+			int sum = 0;
+			String[] split = numberString.split(splitter+"|\n");
+			for(String sp: split) {
+				if(!sp.isEmpty()) 
 					sum += Integer.parseInt(sp);
-				}
-				return sum;
 			}
-			else {
-				return Integer.parseInt(numberString);
-			}
+			return sum;
 		}
 	}
 }
