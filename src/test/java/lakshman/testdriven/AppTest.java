@@ -116,4 +116,9 @@ public class AppTest
     public void tenthCasemultipleDelimiter() {
     	assertThat(App.processNumber("//[***]\n1***2***3"),equalTo(6));
     }
+    
+    @Test
+    public void multipleDelimitersCase() {
+    	assertThat(App.processNumber("//[***][%%]\n1***2***3%%4"),equalTo(10));
+    }
 }

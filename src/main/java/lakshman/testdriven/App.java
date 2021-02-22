@@ -34,32 +34,21 @@ public class App
 			return 0;
 		}
 		else {
-			String splitter = ",";
+			String splitters = ",";
 			if(numberString.startsWith("//")) {
 				if(numberString.contains("[")) {
-					splitter = numberString.substring(3,numberString.indexOf("]"));
-					numberString = numberString.substring(numberString.indexOf("]")+1);
-					StringBuilder sb = new StringBuilder();
-					for(char c: splitter.toCharArray()) {
-						if(c == '*') {
-							sb.append('\\');
-							sb.append('*');
-						}
-						else {
-							sb.append(c);
-						}
-					}
-					splitter = sb.toString();
+					splitters = identifySplitters(numberString);
+					numberString = identifyLastSplitterString(numberString);
 				}
 				else {
-					splitter = numberString.substring(2, 3);
+					splitters = numberString.substring(2, 3);
 					numberString = numberString.substring(3);
 				}
 			}
 			boolean flag = false;
 			List<Integer> negativeNums = new ArrayList<Integer>();
 			int sum = 0;
-			String[] split = numberString.split(splitter+"|\n");
+			String[] split = numberString.split(splitters+"|\n");
 			for(String sp: split) {
 				if(!sp.isEmpty()) {
 					Integer num = Integer.parseInt(sp);
@@ -81,6 +70,44 @@ public class App
 		}
 	}
 	
+	private static String identifyLastSplitterString(String numberString) {
+		int from = 0;
+		while(numberString.indexOf('[', from)!=-1) {
+			int closingIndex = numberString.indexOf(']',from);
+			from = closingIndex+1;
+		}
+		
+		return numberString.substring(from+1);
+	}
+
+	private static String identifySplitters(String numberString) {
+		int from = 0;
+		List<String> splitStrings = new ArrayList<String>();
+		while(numberString.indexOf('[', from)!=-1) {
+			int closingIndex = numberString.indexOf(']', from);
+			String splitter = numberString.substring(numberString.indexOf('[', from)+1,closingIndex);
+			StringBuilder sb = new StringBuilder();
+			for(char c: splitter.toCharArray()) {
+				if(c == '*') {
+					sb.append('\\');
+					sb.append('*');
+				}
+				else {
+					sb.append(c);
+				}
+			}
+			splitStrings.add(sb.toString());
+			from = closingIndex+1;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		for(String sp: splitStrings) {
+			sb.append(sp);
+			sb.append("|");
+		}
+		return sb.toString().substring(0,sb.length()-1);
+	}
+
 	public static int getCount() {
 		return count;
 	}
